@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.util.List;
 
 /**
+ * Servlet class to handle all request for user.
+ *
  * Created by usha on 3/23/2017.
  */
 public class UserServlet extends javax.servlet.http.HttpServlet {
