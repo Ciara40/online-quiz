@@ -1,0 +1,53 @@
+
+body {
+    font-family: Garamond;
+}
+
+.success-message {
+    padding-bottom: 15px;
+}
+
+.logo {
+    padding-bottom: 20px;
+    font-size: 25px;
+    color: darkblue;
+}
+.login-page {
+    width: 600px;
+    margin: auto;
+}
+.form {
+    position: relative;
+    z-index: 1;
+    background: lightskyblue;
+    max-width: 580px;
+    margin: 0 auto 100px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.form .message {
+    margin: 15px 0 0;
+    color: #282525;
+    font-size: 12px;
+}
+.form .message a {
+    color: rebeccapurple;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.form button{
+    color: white;
+    padding: 10px;
+}
+.form button:hover,.form button:active,.form button:focus {
+    background: #025472;
+}
+.footer {
+    padding-top: 80px;
+    padding-bottom: 20px;
+}
+.logo1{
+    padding-left: 30px;
+}
