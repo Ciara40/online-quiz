@@ -135,7 +135,6 @@ public class QuestionRepositoryImpl implements QuestionRepository {
         //"select * from question where id not in(0,"
         query = query.substring(0, index);
         query = query+") limit 1";
-        System.out.println(query);
 
         PreparedStatement pstm = DatabaseConnection.getPreparedStatement(query);
         try {

@@ -12,6 +12,9 @@
     <title>Ubiquitous</title>
     <link href="../css/style.css" rel="stylesheet">
     <link href="../css/bootstrap.css" type="text/css" rel="stylesheet">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/custom.js"></script>
 
 </head>
 <body>
@@ -25,9 +28,9 @@
     <c:choose>
         <c:when test="${question!= null}">
             <form method="post" action="nextQuestion">
-                <%--<input type="hidden" name="id" value="${question.id}">--%>
+                <input type="hidden" name="questionDetail" value="${question.questionDetail}">
                 <input type="hidden" name="page" value="nextQuestion">
-                <input type="hidden" name="correctAns" value="${question.correctAns}">
+                <input id="correctAns" type="hidden" name="correctAns" value="${question.correctAns}">
                 <p>${question.questionDetail}</p>
                 <div class="radio">
                     <label>
@@ -53,8 +56,8 @@
                             ${question.option4}
                     </label>
                 </div>
-                <button type="submit" class="btn btn-primary btn-lg" value="nextQuestion">Next Question</button>
-                    <%--<a href="nextQuestion?page=nextQuestion&id=${nextId}"><img src="../images/next.png" height="50" width="200" alt="Next Question" title="Next Question"></a>--%>
+                <button type="submit"  class="btn btn-primary btn-lg" value="nextQuestion">Next Question</button>
+
             </form>
         </c:when>
         <c:otherwise>
@@ -65,6 +68,7 @@
         </c:otherwise>
     </c:choose>
 </div>
+
 
 </body>
 </html>

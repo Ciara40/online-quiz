@@ -24,38 +24,25 @@
 <div class="container">
 
     <div class="table-title">
-        <h2 style="color: deepskyblue">Final Result</h2>
+        <h2 style="color: deepskyblue">Score</h2>
     </div>
     <div class="table-responsive table-bordered ">
         <table class="table table-striped table-hover">
             <thead>
             <tr>
                 <th>S.N.</th>
-                <th>Question</th>
-                <th>Selected Answered</th>
-                <th>Correct Answer</th>
-                <th>Correctness</th>
+                <th>Score</th>
+                <th>Played date</th>
 
             </tr>
             </thead>
 
-            <c:forEach items="${answeredQuestions}" var="answeredQuestion" varStatus="loop">
+            <c:forEach items="${results}" var="result" varStatus="loop">
                 <tbody class="tbody-striped">
                 <tr>
                     <td>${loop.index + 1}</td>
-                    <td>${answeredQuestion.questionDetail}</td>
-                    <td>${answeredQuestion.selectedAns}</td>
-                    <td>${answeredQuestion.correctAns}</td>
-
-                    <c:choose>
-                        <c:when test="${!answeredQuestion.correctness}">
-                            <td class="alert-danger">Wrong</td>
-                        </c:when>
-                        <c:otherwise>
-                            <td class="success">Correct</td>
-                        </c:otherwise>
-                    </c:choose>
-
+                    <td>${result.score}</td>
+                    <td>${result.datePlayed}</td>
                 </tr>
                 </tbody>
             </c:forEach>

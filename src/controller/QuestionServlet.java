@@ -1,5 +1,6 @@
 package controller;
 
+import domain.AnsweredQuestion;
 import domain.Question;
 import domain.Result;
 import domain.User;
@@ -124,16 +125,25 @@ public class QuestionServlet extends HttpServlet {
             session.setAttribute("questionsPlayed", ids);
             session.setAttribute("score", 0);
 
+
+            List<AnsweredQuestion> answeredQuestions = new ArrayList<>();
+            session.setAttribute("answeredQuestions", answeredQuestions);
+
             request.setAttribute("question", question);
             rd = request.getRequestDispatcher("quiz/playQuiz.jsp");
         }
 
         else if(page.equalsIgnoreCase("nextQuestion")) {
-//            int questionId = Integer.parseInt(request.getParameter("id"));
+            session = request.getSession(false);
             String clicked = request.getParameter("choice");
             String correctAns = request.getParameter("correctAns");
+            String questionDetail = request.getParameter("questionDetail");
+            Boolean correctness = clicked.equals(correctAns)? true: false;
+            AnsweredQuestion answeredQuestion = new AnsweredQuestion(questionDetail, correctAns, clicked, correctness);
+            List <AnsweredQuestion> answeredQuestions = (List<AnsweredQuestion>) session.getAttribute("answeredQuestions");
+            answeredQuestions.add(answeredQuestion);
+            session.setAttribute("answeredQuestions", answeredQuestions);
             int currentScore = clicked.equals(correctAns)? 5: 0; // (exp)? value1: value2;
-            session = request.getSession(false);
             Integer score = (Integer)session.getAttribute("score");
             session.setAttribute("score", currentScore + score);
 
@@ -144,6 +154,8 @@ public class QuestionServlet extends HttpServlet {
             if (question!= null){
                 ids.add(question.getId());
                 session.setAttribute("questionsPlayed", ids);
+                request.setAttribute("question", question);
+                rd = request.getRequestDispatcher("quiz/playQuiz.jsp");
             }
 
             else if (question == null){
@@ -153,9 +165,12 @@ public class QuestionServlet extends HttpServlet {
                 int finalScore = (Integer)session.getAttribute("score");
                 Result result = new Result(userId, finalScore, datePlayed);
                 this.resultService.saveResult(result);
+
+                //show current score
+                request.setAttribute("answeredQuestions", answeredQuestions);
+                rd = request.getRequestDispatcher("result/displayResult.jsp");
             }
-            request.setAttribute("question", question);
-            rd = request.getRequestDispatcher("quiz/playQuiz.jsp");
+
         }
 
         rd.forward(request, response);

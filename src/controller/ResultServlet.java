@@ -35,7 +35,7 @@ public class ResultServlet extends HttpServlet {
             List<Result> results = this.resultService.getAllByUserId(userId);
 
             request.setAttribute("results", results);
-            rd = request.getRequestDispatcher("result/displayResult.jsp");
+            rd = request.getRequestDispatcher("result/displayScore.jsp");
         }
         rd.forward(request,response);
 
