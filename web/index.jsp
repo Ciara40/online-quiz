@@ -58,7 +58,7 @@
                             </div>
                         </div>
                         <div>
-                            <p class="message">Not registered? <a href="register?page=signup">Create an account</a></p>
+                            <p class="message">Not registered?<a href="register?page=signup">Create an account</a></p>
                         </div>
                     </form>
                 </div>

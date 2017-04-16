@@ -1,6 +1,7 @@
 package services.impl;
 
 import domain.Question;
+import domain.Result;
 import repository.QuestionRepository;
 import repository.impl.QuestionRepositoryImpl;
 import services.QuestionService;
@@ -32,12 +33,24 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
+    public Question edit(int id) {
+        return this.questionRepository.edit(id);
+    }
+
+    @Override
     public int update(Question question) {
         return this.questionRepository.update(question);
     }
 
     @Override
-    public Question getQuizById(int id) {
-        return this.questionRepository.findQuestionById(id);
+    public Question getQuizById(List<Integer> ids) {
+        return this.questionRepository.findQuestionById(ids);
+    }
+
+
+
+    @Override
+    public List<Integer> getPlayedQuestion() {
+        return this.questionRepository.findPlayedQuestion();
     }
 }

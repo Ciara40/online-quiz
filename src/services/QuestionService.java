@@ -1,6 +1,7 @@
 package services;
 
 import domain.Question;
+import domain.Result;
 
 import java.util.List;
 
@@ -11,6 +12,9 @@ public interface QuestionService {
     List<Question> getQuestionList();
     Integer save(Question question);
     void deleteQuiz(int id);
+    Question edit(int id);
     int update(Question question);
-    Question getQuizById(int id);
+    Question getQuizById(List<Integer> ids);
+
+    List<Integer> getPlayedQuestion();
 }

@@ -104,4 +104,19 @@
         <url-pattern>/startQuiz</url-pattern>
     </servlet-mapping>
 
+    <servlet-mapping>
+        <servlet-name>questionDetail</servlet-name>
+        <url-pattern>/nextQuestion</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>questionDetail</servlet-name>
+        <url-pattern>/viewResult</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>questionDetail</servlet-name>
+        <url-pattern>/viewQuestion</url-pattern>
+    </servlet-mapping>
+
 </web-app>

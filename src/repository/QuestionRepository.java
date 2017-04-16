@@ -1,7 +1,9 @@
 package repository;
 
 import domain.Question;
+import domain.Result;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 /**
@@ -11,8 +13,9 @@ public interface QuestionRepository {
     List<Question> findAll();
     Integer save(Question question);
     void delete(int id);
+    Question edit(int id);
     int update(Question question);
-    Question findQuestionById(int id);
-    void saveResult(int user_id, int question_id, int marks);
-    int [] getPlayedQuestion();
+    Question findQuestionById(List<Integer> ids);
+
+    List<Integer> findPlayedQuestion();
 }
