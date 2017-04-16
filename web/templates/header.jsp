@@ -25,6 +25,8 @@
             <li><a href="questionList?page=questionList">Quiz</a></li>
             </c:if>
             <li><a href="startQuiz?page=startQuiz">Start Quiz</a> </li>
+            <li><a href="viewResult?page=viewResult">View Scores</a> </li>
+            
             <li><a href="#">Contact Us</a></li>
         </ul>
 

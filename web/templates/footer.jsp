@@ -1,5 +1,5 @@
-<footer class = "container">
+<div class = "container">
     <div class="footer text-center">
         &copy Usha Adhkari
     </div>
-</footer>
+</div>

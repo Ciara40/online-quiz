@@ -14,6 +14,11 @@
         <servlet-class>controller.QuestionServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>result</servlet-name>
+        <servlet-class>controller.ResultServlet</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>user</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -111,12 +116,12 @@
 
     <servlet-mapping>
         <servlet-name>questionDetail</servlet-name>
-        <url-pattern>/viewResult</url-pattern>
+        <url-pattern>/viewQuestion</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
-        <servlet-name>questionDetail</servlet-name>
-        <url-pattern>/viewQuestion</url-pattern>
+        <servlet-name>result</servlet-name>
+        <url-pattern>/viewResult</url-pattern>
     </servlet-mapping>
 
 </web-app>
