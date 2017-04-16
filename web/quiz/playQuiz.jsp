@@ -27,7 +27,7 @@
 <div class="container">
     <c:choose>
         <c:when test="${question!= null}">
-            <form method="post" action="nextQuestion">
+            <form method="post" action="nextQuestion" onsubmit="return checkAnswer();">
                 <input type="hidden" name="questionDetail" value="${question.questionDetail}">
                 <input type="hidden" name="page" value="nextQuestion">
                 <input id="correctAns" type="hidden" name="correctAns" value="${question.correctAns}">
@@ -56,6 +56,7 @@
                             ${question.option4}
                     </label>
                 </div>
+                <p id="selectMsg" class="alert-danger"></p>
                 <button type="submit"  class="btn btn-primary btn-lg" value="nextQuestion">Next Question</button>
 
             </form>

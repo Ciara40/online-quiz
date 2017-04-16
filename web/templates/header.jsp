@@ -13,7 +13,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">${sessionScope.user.name}</a>
+            <a class="navbar-brand" href="#">Hello, ${sessionScope.user.name}</a>
         </div>
 
         <ul class="nav navbar-nav navbar-left">
@@ -26,7 +26,7 @@
             </c:if>
             <li><a href="startQuiz?page=startQuiz">Start Quiz</a> </li>
             <li><a href="viewResult?page=viewResult">View Scores</a> </li>
-            
+
             <li><a href="#">Contact Us</a></li>
         </ul>
 

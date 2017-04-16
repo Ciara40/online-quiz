@@ -130,7 +130,6 @@ public class QuestionRepositoryImpl implements QuestionRepository {
             values+= id+",";
         }
         query = query + values;
-        System.out.println(query);
         int index = query.lastIndexOf(",");
         //"select * from question where id not in(0,"
         query = query.substring(0, index);
