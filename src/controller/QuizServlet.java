@@ -66,21 +66,13 @@ public class QuizServlet extends HttpServlet {
         }
 
         else if(page.equalsIgnoreCase("nextQuestion")) {
-            session = request.getSession(false);
-            String clicked = request.getParameter("choice");
-            String correctAns = request.getParameter("correctAns");
-            String questionDetail = request.getParameter("questionDetail");
-            Boolean correctness = clicked.equals(correctAns)? true: false;
-            AnsweredQuestion answeredQuestion = new AnsweredQuestion(questionDetail, correctAns, clicked, correctness);
+
+            AnsweredQuestion answeredQuestion = getRequestAnsweredQuestion(request);
+
             List <AnsweredQuestion> answeredQuestions = (List<AnsweredQuestion>) session.getAttribute("answeredQuestions");
             answeredQuestions.add(answeredQuestion);
             session.setAttribute("answeredQuestions", answeredQuestions);
-            int currentScore = clicked.equals(correctAns)? 5: 0; // (exp)? value1: value2;
-            Integer score = (Integer)session.getAttribute("score");
-            session.setAttribute("score", currentScore + score);
 
-
-//            List<Integer> ids = this.questionService.getPlayedQuestion();
             List<Integer> ids = (List<Integer>) session.getAttribute("questionsPlayed");
             Question question = this.questionService.getQuizById(ids);
             if (question!= null){
@@ -105,6 +97,24 @@ public class QuizServlet extends HttpServlet {
 
         }
         rd.forward(request,response);
+    }
+
+    private AnsweredQuestion getRequestAnsweredQuestion(HttpServletRequest request){
+        HttpSession session = request.getSession(false);
+        String clicked = request.getParameter("choice");
+        String correctAns = request.getParameter("correctAns");
+        String questionDetail = request.getParameter("questionDetail");
+        Boolean correctness = clicked.equals(correctAns)? true: false;
+        AnsweredQuestion answeredQuestion = new AnsweredQuestion(questionDetail, correctAns, clicked, correctness);
+
+        /*List <AnsweredQuestion> answeredQuestions = (List<AnsweredQuestion>) session.getAttribute("answeredQuestions");
+        answeredQuestions.add(answeredQuestion);
+        session.setAttribute("answeredQuestions", answeredQuestions);*/
+
+        int currentScore = clicked.equals(correctAns)? 5: 0; // (exp)? value1: value2;
+        Integer score = (Integer)session.getAttribute("score");
+        session.setAttribute("score", currentScore + score);
+        return answeredQuestion;
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

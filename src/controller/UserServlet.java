@@ -42,20 +42,9 @@ public class UserServlet extends javax.servlet.http.HttpServlet {
                 rd = request.getRequestDispatcher("user/homepage.jsp");
             }
         }
-        else if (session == null || session.getAttribute("user") == null) {
-            request.setAttribute("msg", "Session has expired..Please login to continue!!");
-            rd = request.getRequestDispatcher("index.jsp");
-        }
+
         else if (page.equalsIgnoreCase("signup")) {
             rd = request.getRequestDispatcher("user/signup.jsp");
-        }
-
-        else if (page.equalsIgnoreCase("logout")) {
-            request.setAttribute("msg", "Logout Successful!!");
-            session = request.getSession(false); // mathi jun name login ma use bhako cha tei name tanera leraucha
-            session.removeAttribute("user");
-            session.invalidate(); //clearing the session
-            rd = request.getRequestDispatcher("index.jsp");//phone rec
         }
 
         else if (page.equalsIgnoreCase("register")) {
@@ -70,6 +59,20 @@ public class UserServlet extends javax.servlet.http.HttpServlet {
                 request.setAttribute("msg", "User already exists.");
                 rd = request.getRequestDispatcher("user/signup.jsp");
             }
+        }
+
+        else if (session == null || session.getAttribute("user") == null) {
+            request.setAttribute("msg", "Session has expired..Please login to continue!!");
+            rd = request.getRequestDispatcher("index.jsp");
+        }
+
+
+        else if (page.equalsIgnoreCase("logout")) {
+            request.setAttribute("msg", "Logout Successful!!");
+            session = request.getSession(false); // mathi jun name login ma use bhako cha tei name tanera leraucha
+            session.removeAttribute("user");
+            session.invalidate(); //clearing the session
+            rd = request.getRequestDispatcher("index.jsp");//phone rec
         }
 
         else if (page.equalsIgnoreCase("home")) {
